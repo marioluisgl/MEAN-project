@@ -9,8 +9,8 @@ var UserController = require('../controllers/UserController');
 var md_auth = require('./middlewares/Authorization');
 
 //Routes
-route.post('/save', UserController.save);
-route.post('/login', UserController.login);
+route.post('/user/save', UserController.save);
+route.post('/user/login', UserController.login);
 route.get('/user/:id', md_auth.ensureAuth, UserController.findById);
 route.get('/users/:page?', md_auth.ensureAuth, UserController.findAll);
 

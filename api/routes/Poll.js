@@ -9,8 +9,8 @@ var PollController = require('../controllers/PollController');
 var md_auth = require('./middlewares/Authorization');
 
 //Routes
-route.get('/poll-test', md_auth.ensureAuth, PollController.test);
-
+route.get('/poll/test', md_auth.ensureAuth, PollController.test);
+route.post('/poll/save', md_auth.ensureAuth, PollController.save);
 
 
 //Exports
