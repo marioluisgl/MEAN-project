@@ -8,7 +8,8 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 //Load all routes
-var user_routes = require('../api/routes/User');
+var user_routes = require('./routes/User');
+var poll_routes = require('./routes/Poll');
 
 //Middlewares
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,6 +30,7 @@ app.use(cors(corsOptions));
 
 //Routes
 app.use('/api', user_routes);
+app.use('/api', poll_routes);
 
 //Exports
 module.exports = app;

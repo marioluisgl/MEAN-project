@@ -21,11 +21,11 @@ exports.ensureAuth = function(req, res, next){
                             req.decoded = decoded;
                             next();
                         } else {
-                            res.status(500).send({success: false, message: 'Failed to authenticate user token.'});
+                            res.status(500).send({success: false, message: 'Failed to authenticate user wrong password'});
                         }
                     }
                     else{
-                        res.status(404).send({success: false, message: "User no found"});
+                        res.status(404).send({success: false, message: "Failed to authenticate user token"});
                     }                       
                 }); 
             }
