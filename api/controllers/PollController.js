@@ -1,6 +1,7 @@
 'use strict'
 
 const User = require('../models/User');
+const Poll = require('../models/Poll');
 const userService = require('../services/UserService');
 const pollService = require('../services/PollService');
 const authLocal = require('../auth/auth-local');
@@ -51,5 +52,11 @@ exports.findById = function (req, res) {
         pollService.findById({_id: req.params.id},
             [{path: "author", options: {select: 'name username email'}}], res) :
         res.status(401).send({success: false, message: 'Bad Request: Missing Token'});
+};
+
+exports.findAll = function (req, res) {
+    req.decoded != 'Anonymous' && req.decoded.role != config.roleEnum.USER ? 
+        commonController.findAll(req, res, Poll, [{path: "author", options: {select: 'name username email'}}], []) :
+            res.status(401).send({success: false, message: 'Bad Request: Not Authorization'});
 };
 

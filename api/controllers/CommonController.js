@@ -30,7 +30,8 @@ exports.findAll = function (req, res, Schema, populate, filters) {
     const options = {
         page: page,
         limit: count,
-        sort: {'_id': -1 || req.query.sort}
+        sort: {'_id': -1 || req.query.sort},
+        populate: populate
     };
 
     Schema.paginate(query, options, (err, result) => {

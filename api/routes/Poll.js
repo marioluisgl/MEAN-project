@@ -12,7 +12,7 @@ var md_auth = require('./middlewares/Authorization');
 route.get('/poll/test', md_auth.ensureAuth, PollController.test);
 route.post('/poll/save', md_auth.ensureAuth, PollController.save);
 route.get('/poll/:id', md_auth.ensureAuth, PollController.findById);
-
+route.get('/polls/:page?', md_auth.ensureAuth, PollController.findAll);
 
 //Exports
 module.exports = route;
