@@ -11,6 +11,7 @@ var md_auth = require('./middlewares/Authorization');
 //Routes
 route.get('/poll/test', md_auth.ensureAuth, PollController.test);
 route.post('/poll/save', md_auth.ensureAuth, PollController.save);
+route.get('/poll/:id', md_auth.ensureAuth, PollController.findById);
 
 
 //Exports

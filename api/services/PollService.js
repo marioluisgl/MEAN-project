@@ -16,11 +16,9 @@ exports.save = function(data, files, res){
     });
 };
 
-exports.findById = function (query, res) {
+exports.findById = function (query, populate, res) {
     Poll.findById(query, (err, poll) => {
-        err ? res.status(500).send({success: false, message: err.message}) :
-            !user ? res.status(404).send({success: false, message: 'The Poll do not exist on DB'}):
-                res.status(200).send({success: true, data: poll});
-            
-    });
+        !err ? res.status(200).send({success: true, data: poll}):
+            res.status(500).send({success: false, message: err.message});
+    }).populate(populate || []);
 };

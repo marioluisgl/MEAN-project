@@ -45,3 +45,11 @@ exports.save = function(req, res){
         }); 
     }            
 };
+
+exports.findById = function (req, res) {
+    req.decoded != 'Anonymous' ?
+        pollService.findById({_id: req.params.id},
+            [{path: "author", options: {select: 'name username email'}}], res) :
+        res.status(401).send({success: false, message: 'Bad Request: Missing Token'});
+};
+
