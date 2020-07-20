@@ -7,6 +7,7 @@ const formidable = require('formidable');
 const _ = require('lodash');
 const getFunctionUtil = require('../utils/GetFunctionUtil');
 const commonController = require('./CommonController');
+const config = require('../config/Config');
 
 
 exports.save = function(req, res){  
@@ -50,9 +51,9 @@ exports.findById = function (req, res) {
 };
 
 exports.findAll = function (req, res) {
-    req.decoded != 'Anonymous' ? 
+    req.decoded != 'Anonymous' && req.decoded.role != config.roleEnum.USER ? 
         commonController.findAll(req, res, User, [], []) :
-        res.status(401).send({success: false, message: 'Bad Request: Not Authorization'});
+            res.status(401).send({success: false, message: 'Bad Request: Not Authorization'});
 };
 
 
