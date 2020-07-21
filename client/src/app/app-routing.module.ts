@@ -9,18 +9,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-const routes: Routes = [
-  { 
-    path: '', 
-    component: PagesComponent ,
-    children: [
-      { path: 'dashboard', component: DashboardComponent }, 
-      { path: 'progress', component: ProgressComponent },
-      { path: 'grafics', component: GraficsComponent },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    ]
-  },
- 
+const routes: Routes = [ 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }, 
   { path: '**', component: NotFound404Component }
