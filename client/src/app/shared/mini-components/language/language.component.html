@@ -1,0 +1,12 @@
+<div *ngIf="showLangMenu" class="language-select active cursor-pointer">
+    <div (click)="displayLanguages()">
+      <i [className]="'flag-icon flag-icon-' + (selected === 'en' ? 'us' : selected)"></i>
+    </div>
+    <ng-container *ngIf="toSelect">
+      <ul *ngFor="let option of languagesDynamic; let i=index" class="language-container-display">
+        <li (click)="selectLanguage(option)" [ngStyle]="getStyle(i)" class="flag">
+          <i [className]="'flag-icon flag-icon-' + (option === 'en' ? 'us' : option) "></i>
+        </li>
+      </ul>
+    </ng-container>
+</div>

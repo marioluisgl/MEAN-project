@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -6,6 +7,11 @@ import { HeaderComponent } from './header/header.component';
 import { NotFound404Component } from './not-found404/not-found404.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LanguageComponent } from './mini-components/language/language.component';
+
+//Services
+import { HandleSharedService } from '../services/handle-shared.service'
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -14,7 +20,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     SidebarComponent,
     BreadcrumbsComponent,  
-    NotFound404Component   
+    NotFound404Component, 
+    LanguageComponent   
   ],
   exports: [
     HeaderComponent,
@@ -22,9 +29,15 @@ import { CommonModule } from '@angular/common';
     BreadcrumbsComponent,   
     NotFound404Component 
   ],
+  imports: [
+    CommonModule,
+    TranslateModule
+  ],
   providers: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    BrowserModule,
+    HandleSharedService
   ],
 })
 export class SharedModule { }

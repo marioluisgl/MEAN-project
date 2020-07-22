@@ -15,9 +15,9 @@
             </a>
         </div>
      
-        <div class="navbar-collapse">        
+        <div class="navbar-collapse">   
+            <!-- This is hiden menu  (left)-->     
             <ul class="navbar-nav mr-auto">
-                <!-- This is  -->
                 <li class="nav-item"> 
                     <a  class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" 
                         href="javascript:void(0)">
@@ -32,8 +32,10 @@
                 </li>
                 <li class="nav-item hidden-sm-down"></li>
             </ul>
-           
-            <ul class="navbar-nav my-lg-0">          
+
+           <!-- Right menu header  (right)-->
+            <ul class="navbar-nav my-lg-0">     
+                <!-- Search -->     
                 <li class="nav-item hidden-xs-down search-box"> 
                     <a  class="nav-link hidden-sm-down waves-effect waves-dark" 
                         href="javascript:void(0)">
@@ -45,6 +47,7 @@
                     </form>
                 </li>
         
+                <!-- Messages -->
                 <li class="nav-item dropdown">
                     <a  class="nav-link dropdown-toggle waves-effect waves-dark" 
                         href="" id="2" data-toggle="dropdown" aria-haspopup="true" 
@@ -117,24 +120,8 @@
                         </ul>
                     </div>
                 </li>
-               
-                <li class="nav-item dropdown">
-                    <a  class="nav-link dropdown-toggle waves-effect waves-dark" 
-                        href="" data-toggle="dropdown" 
-                        aria-haspopup="true" 
-                        aria-expanded="false">
-                        <i class="flag-icon flag-icon-us"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right animated fadeIn"> 
-                        <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-in"></i> India</a> 
-                        <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a> 
-                        <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> China</a>                               
-                        <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> Dutch</a> 
-                    </div>
-                </li>
-                <!-- ============================================================== -->
+
                 <!-- Profile -->
-                <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a  class="nav-link dropdown-toggle waves-effect waves-dark" 
                         href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -149,7 +136,7 @@
                                         <h4>Steave Jobs</h4>
                                         <p class="text-muted">varun@gmail.com</p>
                                         <a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">
-                                            View Profile
+                                            {{ 'Prueba.profile' | translate }}
                                         </a>
                                     </div>
                                 </div>
@@ -166,6 +153,10 @@
                     </div>
                 </li>
             </ul>
+
+            <!-- Language -->
+            <app-language></app-language>
+                
         </div>
     </nav>
 </header>

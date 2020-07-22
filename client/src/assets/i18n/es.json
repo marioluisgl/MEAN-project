@@ -1,0 +1,10 @@
+{
+    "LanguageNames": {
+        "en": "Ingles",
+        "es": "Español"
+    },
+
+    "Prueba" : {
+        "profile": "Perfil" 
+    }
+}
