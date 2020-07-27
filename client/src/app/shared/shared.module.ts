@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LanguageComponent } from './mini-components/language/language.component';
 
+
 //Services
-import { HandleSharedService } from '../services/handle-shared.service'
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -21,15 +21,17 @@ import { TranslateModule } from '@ngx-translate/core';
     SidebarComponent,
     BreadcrumbsComponent,  
     NotFound404Component, 
-    LanguageComponent   
+    LanguageComponent, 
+ 
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     BreadcrumbsComponent,   
-    NotFound404Component 
+    NotFound404Component,
+
   ],
-  imports: [
+  imports: [  
     CommonModule,
     TranslateModule
   ],
@@ -37,7 +39,6 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     CommonModule,
     BrowserModule,
-    HandleSharedService
   ],
 })
 export class SharedModule { }

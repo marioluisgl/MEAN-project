@@ -1,6 +1,8 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 //Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -8,27 +10,43 @@ import { AppRoutingModule } from './app-routing.module';
 // Modules
 import { PagesModule } from './pages/pages.module';
 
+//Services
+import { ServiceModule } from './services/services.module';
+
+//Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login.component';
 import { RegisterComponent } from './auth/register.component';
+import { FieldErrorComponent } from './shared/field-error/field-error.component';
 
 //Translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import localeEn from '@angular/common/locales/en';
+import localeEs from '@angular/common/locales/es';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localeEn, 'en');
+registerLocaleData(localeEs, 'es');
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent   
+    RegisterComponent,
+    FieldErrorComponent
   ],
   imports: [
     BrowserModule,  
     PagesModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -36,7 +54,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
         deps: [HttpClient]
       }
     }),
-  ], 
+    ServiceModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
