@@ -1,0 +1,10 @@
+
+<div [class.mat-form-field-nested]="disableLine">
+    <div *ngIf="!disableLine" class="line-error" [class.btn--bg-red]="showError"
+        [class.btn--bg-transparent]="!showError">
+    </div>
+
+    <div class="field-error" [ngStyle]="{'text-align': textAlign}" *ngIf="showError" [@enterText]>
+        <span class="text-secondary">{{textErrors?.length > 0 ? textErrors[0] : ''}}</span>
+    </div>
+</div>
