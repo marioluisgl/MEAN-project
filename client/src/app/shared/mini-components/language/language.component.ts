@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { HandleSharedService } from './../../../services/handle-shared.service';
+import { HandleSharedService } from './../../../services/handle.services.service';
 import { GlOBAL_CONFIG } from './../../../core/configs/config';
+
 
 @Component({
   selector: 'app-language',
