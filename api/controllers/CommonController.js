@@ -3,7 +3,7 @@
 const User = require('../models/User');
 const userService = require('../services/UserService');
 const authLocal = require('../auth/auth-local');
-const formidable = require('formidable');
+//const formidable = require('formidable');
 const _ = require('lodash');
 const getFunctionUtil = require('../utils/GetFunctionUtil');
 
