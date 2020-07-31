@@ -10,6 +10,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { IUserModel, UserModel } from '../models/user.model';
 import * as _swal from 'sweetalert';
 import { SweetAlert } from 'sweetalert/typings/core';
+import { HandleAuthService } from '../services/handle-auth.service';
+import { cloneDeep } from 'lodash';
+import { Helper } from '../services/helper.service';
+import { Router, ActivatedRoute } from '@angular/router';
 const swal: SweetAlert = _swal as any;
 
 
@@ -24,6 +28,9 @@ export class RegisterComponent implements OnInit {
   @Input() modelData: IUserModel;
   
   constructor(private _translate: TranslateService,
+              private _handleAuth: HandleAuthService,
+              private _router: Router,
+              private _route: ActivatedRoute,
               protected _fb: FormBuilder) { 
 
     this.createRegisterForm();
@@ -50,6 +57,19 @@ export class RegisterComponent implements OnInit {
       );
       return;
     }
+
+    this.modelData.name = this.userRegisterForm.get('name').value;
+    this.modelData.username = this.userRegisterForm.get('username').value;
+    this.modelData.email = this.userRegisterForm.get('email').value;
+    this.modelData.password = this.userRegisterForm.get('password').value;
+   
+    let modelDataCopy = cloneDeep(this.modelData);
+    modelDataCopy = Helper.convertToStringify(Helper.removeNulls(modelDataCopy));
+    console.log(modelDataCopy);
+    this._handleAuth.register_user({data: modelDataCopy}).subscribe(data => {
+      this.modelData = new UserModel();
+      console.log(data);
+    });
   }
 
   private _registerFormGroup(){
