@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HandleAuthService } from 'src/app/services/handle.services.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _authService: HandleAuthService) { }
 
   ngOnInit(): void {
   }

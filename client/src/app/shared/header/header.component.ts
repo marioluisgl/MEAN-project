@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { HandleAuthService } from 'src/app/services/handle.services.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private _translate: TranslateService) { }
+  constructor( private _translate: TranslateService,
+               public _authService: HandleAuthService ) { }
 
   ngOnInit(): void {
   }
