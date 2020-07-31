@@ -35,6 +35,21 @@ export class UserModel implements IUserModel {
         };
     }
 }
+
+export interface IAuthUser {
+    email?: string;
+    password?: string;
+}
+  
+  export interface IVerifyUser {
+    email?: string;
+    token?: string;
+}
+  
+  export interface IAuthSuccessUser {
+    token: string,
+    user: IUserModel,
+}
   
   
 export enum IRole {
