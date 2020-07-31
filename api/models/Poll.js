@@ -16,6 +16,7 @@ const pollSchema = new Schema({
         rat_result: {type: Number, default: 0},
     }],  
     users: [{type: Schema.ObjectId, ref: "User"}],
+    created: {type: Date, default: Date.now()},
    
 });
 

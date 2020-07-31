@@ -1,0 +1,88 @@
+.language-select {
+    position: relative;
+    width: 25px;
+    margin-left: 10px;
+  
+    i{
+      font-size: 20px;
+    }
+  
+    .language-container-display {
+  
+      @-webkit-keyframes langAnim {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+          margin-top: 5px;
+        }
+      }
+  
+      @-moz-keyframes langAnim {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+          margin-top: 5px;
+        }
+      }
+  
+      @-ms-keyframes langAnim {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+          margin-top: 5px;
+        }
+      }
+  
+      @-o-keyframes langAnim {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+          margin-top: 5px;
+        }
+      }
+  
+      @keyframes langAnim {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+          margin-top: 5px;
+        }
+      }
+  
+      .flag {
+        opacity: 0;
+        width: 25px;
+        height: 25px;
+        margin-top: 5px;
+        animation: 0.4s langAnim;
+        animation-fill-mode: forwards;
+        -webkit-animation-name: langAnim;
+        -webkit-animation-fill-mode: forwards;
+      }
+    }
+  
+    li.flag {
+      text-align: center;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+      position: absolute;
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .language-select {
+      margin: 0 10px;
+    }
+  }
+  

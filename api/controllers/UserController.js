@@ -7,35 +7,36 @@ const formidable = require('formidable');
 const _ = require('lodash');
 const getFunctionUtil = require('../utils/GetFunctionUtil');
 const commonController = require('./CommonController');
+const config = require('../config/Config');
+const { options } = require('../app');
 
 
-// Metodo de prueba
-exports.test = function(req, res){
-    req.decoded == 'Anonymous' ?
-        res.status(401).send({
-            success: false,
-            message: "Bad Request: Bad Request: Not Authorization"
-        }):   
-        res.status(200).send({
-            success: true,
-            user: req.decoded.name
-        });    
-};
 
-exports.save = function(req, res){  
-    let data, files;
-    _.forEach(req.body, (value, key) =>{
-        if(getFunctionUtil.isJson(value)){
-            req.body[key] = JSON.parse(value);
-        }
+exports.save = function(req, res, next){  
+    let data, file;
+    const form = formidable({multiples: true});
+
+    form.parse(req, function (err, fields, files) {
+        data = fields;
+        _.forEach(data, (value, key) => {
+            if (getFunctionUtil.isJson(value)) {
+                data[key] = JSON.parse(value);
+            }
+        });
+        file = files;
     });
 
-    data = req.body;     
-    userService.save(data, files, res, (err, result) =>{
-        err ? res.status(401).send({success: false, message: err}) : res.json({
-            success: true,
-            data: result
-        });
+    form.on('error', function (err) {
+        res.status(401).send({success: false, message: err});
+    });
+    
+    form.on('end', function () {
+        userService.save(data, file, res, (err, result) =>{
+            err ? res.status(401).send({success: false, message: err}) : res.json({
+                success: true,
+                data: result
+            });
+        }); 
     });    
 };
 
@@ -63,9 +64,9 @@ exports.findById = function (req, res) {
 };
 
 exports.findAll = function (req, res) {
-    req.decoded != 'Anonymous' ? 
+    req.decoded != 'Anonymous' && req.decoded.role != config.roleEnum.USER ? 
         commonController.findAll(req, res, User, [], []) :
-        res.status(401).send({success: false, message: 'Bad Request: Not Authorization'});
+            res.status(401).send({success: false, message: 'Bad Request: Not Authorization'});
 };
 
 

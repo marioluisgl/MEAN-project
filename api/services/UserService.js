@@ -4,10 +4,9 @@ const User = require('../models/User');
 const _ = require('lodash');
 const config = require('../config/Config');
 
-exports.save = function(data, files, res){
+exports.save = function(data, file, res){
 
     data['created'] = new Date();
-    data['role'] = config.roleEnum.USER;
     const user = new User(data);
     
     user.save((err, user) => {

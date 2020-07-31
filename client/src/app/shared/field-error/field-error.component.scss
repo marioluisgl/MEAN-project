@@ -1,0 +1,37 @@
+:host{
+    display: block;
+    height: 20px;
+    clear: both;
+}
+
+span {
+    font-size: 8pt;
+    color: red;
+}
+
+.line-error{
+    height: 1px;
+    width: 100%;
+    transition: 0.3s all;
+}
+
+.field-error {
+    position: relative;
+    clear: both;
+    width: 100%;
+    // text-align: right;
+}
+
+.mat-form-field-nested{
+    margin-top: -1.45em;
+}
+
+.btn--bg-transparent {
+    background: transparent !important;
+}
+
+.btn--bg-red {
+    background: #FE3153 !important;
+    color: white !important;
+}
+  

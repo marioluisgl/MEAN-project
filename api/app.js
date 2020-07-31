@@ -8,13 +8,14 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 //Load all routes
-var user_routes = require('../api/routes/User');
+var user_routes = require('./routes/User');
+var poll_routes = require('./routes/Poll');
 
 //Middlewares
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
-app.use(fileUpload());
+//app.use(fileUpload());
 app.use(require('cookie-parser')());
 app.use(require('express-session')({secret: 'keyboard cat', resave: true, saveUninitialized: true}));
 
@@ -29,6 +30,7 @@ app.use(cors(corsOptions));
 
 //Routes
 app.use('/api', user_routes);
+app.use('/api', poll_routes);
 
 //Exports
 module.exports = app;

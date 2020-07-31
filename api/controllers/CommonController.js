@@ -3,7 +3,7 @@
 const User = require('../models/User');
 const userService = require('../services/UserService');
 const authLocal = require('../auth/auth-local');
-const formidable = require('formidable');
+//const formidable = require('formidable');
 const _ = require('lodash');
 const getFunctionUtil = require('../utils/GetFunctionUtil');
 
@@ -30,7 +30,8 @@ exports.findAll = function (req, res, Schema, populate, filters) {
     const options = {
         page: page,
         limit: count,
-        sort: {'_id': -1 || req.query.sort}
+        sort: {'_id': -1 || req.query.sort},
+        populate: populate
     };
 
     Schema.paginate(query, options, (err, result) => {
