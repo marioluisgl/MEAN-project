@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// Helpers
+import { JwtInterceptor } from './core/jwt-interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './core/jwt-interceptors/error.interceptor';
 
 //Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -22,15 +27,13 @@ import { FieldErrorComponent } from './shared/field-error/field-error.component'
 //Translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import localeEn from '@angular/common/locales/en';
 import localeEs from '@angular/common/locales/es';
 import {registerLocaleData} from '@angular/common';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeEs, 'es');
-
-
 
 @NgModule({
   declarations: [
@@ -40,7 +43,7 @@ registerLocaleData(localeEs, 'es');
     FieldErrorComponent
   ],
   imports: [
-    BrowserModule,  
+  BrowserModule,  
     PagesModule,
     AppRoutingModule,
     FormsModule,
@@ -56,7 +59,10 @@ registerLocaleData(localeEs, 'es');
     }),
     ServiceModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
